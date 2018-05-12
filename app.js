@@ -41,10 +41,6 @@ function construirCardProduto(produto){
 	
 }
 
-function X(obj) {
-    montaComponent(obj.data.reference.item, obj.data.recommendation);
-}
-
 function mover(direcao) {
 
 	const widthCard = 240;
