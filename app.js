@@ -84,6 +84,6 @@ function mover(direcao) {
 	}else{
 		document.getElementById("direita").style.visibility = 'visible';
 		document.getElementById("esquerda").style.visibility = 'visible';
-		elem.style.right = pos + 'px'; 
+		elem.style.right = posicao + 'px'; 
 	}
 }
