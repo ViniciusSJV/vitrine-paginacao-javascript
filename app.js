@@ -24,12 +24,19 @@ function montaComponent(produto, recomendacoes){
 
 function construirCardProduto(produto){
 	
-	return '<div class="produto" >' + 
-			'<a href="' + produto.detailUrl + '"><img runat="server" src="'+ produto.imageName +'">' +
+	let oldPrice = "";
+	
+	if(produto.oldPrice != null){
+	    oldPrice = '<small>De: ' + produto.oldPrice + '</small>';
+	}
+	
+	return '<div class="produto">' + 
+			'<img style="width:100%" src="http:'+ produto.imageName +'">' +
 			'<p>' + produto.name + '</p>' +
-			'<small>De: ' + produto.oldPrice + '</small><br>' +
-			'<span>Por: ' + produto.price + '</span><br>' +
-			'<span>' + produto.productInfo.paymentConditions + '</span></a>' +
+			oldPrice +
+			'<span>Por: ' + produto.price + '</span>' +
+			'<span>' + produto.productInfo.paymentConditions + '</span>' +
+			'<a href="'+produto.detailUrl+'"target="blank">Ver mais</a>'
 		'</div>';
 	
 }
@@ -49,13 +56,17 @@ function mover(direcao) {
 	const totalCard = elem.childElementCount;
 	
 	let rect = elem.getBoundingClientRect();
+	//ponto X do elemento q quero animar pra gerar o efeito de paginação; 
+	//aqui eu tiro 118 de margim, botoes da paginacao, etc e asumo q meu elemento esta no ponto X = 0 da minha tela no primeiro momento
+	//assim posso usar esse ponto X para saber os limites q posso mover meu elemento.
 	let x = rect.x - 118;
-	let pos;
+	
+	let posicao;
 
 	if(direcao == 0){
-		pos = (x * -1) + widthCard;
+		posicao = (x * -1) + widthCard;
 	}else{
-		pos = (x * -1) - widthCard;
+		posicao = (x * -1) - widthCard;
 	}
 	
 	let numCardsPossiveisNaTela = Math.round(widthContainer/widthCard);
@@ -63,11 +74,11 @@ function mover(direcao) {
 	
 	let ultimaPosisao = (numCardsForadaTela * widthCard) + widthCard;
 	
-	if(pos < 0){
+	if(posicao < 0){
 		elem.style.right = '0px'; 
 		document.getElementById("direita").style.visibility = 'visible';
 		document.getElementById("esquerda").style.visibility = 'hidden';
-	} else if(pos > ultimaPosisao){
+	} else if(posicao > ultimaPosisao){
 		document.getElementById("direita").style.visibility = 'hidden';
 		document.getElementById("esquerda").style.visibility = 'visible';
 	}else{
