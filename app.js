@@ -1,7 +1,7 @@
 function getProdutos ()
 {
     var s = document.createElement("script");
-    s.src = "http://roberval.chaordicsystems.com/challenge/challenge.json?callback=X";
+    s.src = "http://roberval.chaordicsystems.com/challenge/challenge.json?method=getQuote&lang=en&format=jsonp&jsonp=X";
     document.body.appendChild(s);
 }
 
