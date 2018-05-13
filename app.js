@@ -35,7 +35,8 @@ function construirCardProduto(produto){
 			'<p>' + produto.name + '</p>' +
 			oldPrice +
 			'<span>Por: ' + produto.price + '</span>' +
-			'<span>' + produto.productInfo.paymentConditions + '</span>' +
+			'<span>' + produto.productInfo.paymentConditions.replace(".", ",") + '</span>' +
+			'<span>Sem juros</span>' +
 			'<a href="http:'+produto.detailUrl+'"target="blank">Ver mais</a>'
 		'</div>';
 	
