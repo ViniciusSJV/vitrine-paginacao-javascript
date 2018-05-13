@@ -36,7 +36,7 @@ function construirCardProduto(produto){
 			oldPrice +
 			'<span>Por: ' + produto.price + '</span>' +
 			'<span>' + produto.productInfo.paymentConditions + '</span>' +
-			'<a href="'+produto.detailUrl+'"target="blank">Ver mais</a>'
+			'<a href="http:'+produto.detailUrl+'"target="blank">Ver mais</a>'
 		'</div>';
 	
 }
